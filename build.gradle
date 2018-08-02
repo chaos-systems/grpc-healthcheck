@@ -44,7 +44,7 @@ build.dependsOn sourceJar
 publishing {
     publications {
         PubBintray(MavenPublication) {
-            components.java
+            from components.java
             artifact sourceJar
             artifact protoJar
         }
