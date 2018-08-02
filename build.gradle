@@ -67,6 +67,5 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/chaos-systems/grpc-healthcheck'
     }
-
 }
 
