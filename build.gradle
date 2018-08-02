@@ -1,0 +1,72 @@
+plugins {
+    id "java"
+    id "maven-publish"
+    id "com.jfrog.bintray" version "1.8.4"
+    id "com.google.protobuf" version "0.8.6"
+}
+
+group 'io.chaossystems.grpc'
+version '1.0.1'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+protobuf {
+    // Configure the protoc executable
+    protoc {
+        // Download from repositories
+        artifact = 'com.google.protobuf:protoc:3.0.+'
+    }
+
+    generatedFilesBaseDir = "$projectDir/build/src/generated"
+}
+
+dependencies {
+    compile 'com.google.protobuf:protobuf-java:3.5.+'
+    compile 'io.grpc:grpc-all:1.14.+'
+}
+
+task protoJar(type: Jar){
+    classifier = "protos"
+    from sourceSets.main.proto
+}
+
+task sourceJar(type: Jar) {
+    classifier = "sources"
+    from sourceSets.main.allJava
+}
+
+build.dependsOn protoJar
+build.dependsOn sourceJar
+
+publishing {
+    publications {
+        PubBintray(MavenPublication) {
+            components.java
+            artifact sourceJar
+            artifact protoJar
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+
+    publish = true
+    override = true
+
+    publications = ['PubBintray']
+
+    pkg {
+        repo = 'mvn'
+        name = project.name
+        userOrg = 'chaos-systems'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/chaos-systems/grpc-healthcheck'
+    }
+
+}
+
