@@ -9,8 +9,10 @@ jobs:
       uses: actions/checkout@v1
     - name: Build
       uses: docker://azul/zulu-openjdk:12
-      run: make build
+      with: 
+        entrypoint: make build
     - name: Publish
       if: github.head_ref == 'master'
       uses: docker://azul/zulu-openjdk:12
-      run: make publish
+      with: 
+        entrypoint: make publish
