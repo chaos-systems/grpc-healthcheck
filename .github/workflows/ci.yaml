@@ -10,7 +10,7 @@ jobs:
     - name: Build
       uses: ./.github/actions/build
       with: 
-        entrypoint: make build
+        command: make build
     - name: Publish
       if: github.head_ref == 'master'
       uses: ./.github/actions/build
@@ -18,4 +18,4 @@ jobs:
         BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
         BINTRAY_API_KEY: ${{ secrets.BINTRAY_API_KEY }}
       with:
-        entrypoint: make publish
+        command: make publish
