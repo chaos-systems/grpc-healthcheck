@@ -8,12 +8,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Build
-      needs: Checkout
       uses: ./.github/actions/build
       with: 
         command: make build
     - name: Publish
-      needs: Build
       if: github.ref == "master"
       uses: ./.github/actions/build
       env:
