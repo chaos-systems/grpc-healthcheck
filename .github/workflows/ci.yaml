@@ -12,7 +12,7 @@ jobs:
       with: 
         command: make build
     - name: Publish
-      if: github.head_ref == 'master'
+      if: github.ref == 'master'
       uses: ./.github/actions/build
       env:
         BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
