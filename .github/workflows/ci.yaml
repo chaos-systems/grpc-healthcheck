@@ -14,5 +14,8 @@ jobs:
     - name: Publish
       if: github.head_ref == 'master'
       uses: ./.github/actions/build
+      env:
+        BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
+        BINTRAY_API_KEY: ${{ secrets.BINTRAY_API_KEY }}
       with:
         entrypoint: make publish
