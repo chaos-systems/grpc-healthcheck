@@ -17,15 +17,15 @@ protobuf {
     // Configure the protoc executable
     protoc {
         // Download from repositories
-        artifact = 'com.google.protobuf:protoc:3.0.+'
+        artifact = 'com.google.protobuf:protoc:3.10.+'
     }
 
     generatedFilesBaseDir = "$projectDir/build/src/generated"
 }
 
 dependencies {
-    compile 'com.google.protobuf:protobuf-java:3.5.+'
-    compile 'io.grpc:grpc-all:1.14.+'
+    compile 'com.google.protobuf:protobuf-java:3.10.+'
+    compile 'io.grpc:grpc-all:1.25.+'
 }
 
 task protoJar(type: Jar){
