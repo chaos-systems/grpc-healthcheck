@@ -17,5 +17,6 @@ jobs:
       env:
         BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
         BINTRAY_API_KEY: ${{ secrets.BINTRAY_API_KEY }}
+        GPR_API_KEY: ${{secrets.GITHUB_TOKEN}}
       with:
         args: publish
