@@ -1,7 +1,7 @@
-FROM azul/zulu-openjdk:12
+FROM azul/zulu-openjdk:13
 
 RUN apt-get update \
     && apt-get install -y \
     make
 
-ENTRYPOINT "/bin/make"
+ENTRYPOINT "/usr/bin/make"
