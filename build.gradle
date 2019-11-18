@@ -47,9 +47,8 @@ publishing {
             name = "GitHubPackages"
             url = "https://maven.pkg.github.com/chaos-systems/grpc-healthcheck"
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password project.hasProperty('gpr.key') ? project.property('gpr.key') : System.getenv('GPR_API_KEY')
-            }
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR") ?: System.getenv("USER")
+                password = project.findProperty("gpr.key") ?: System.getenv("GPR_API_KEY")            }
         }
     }
     publications {
