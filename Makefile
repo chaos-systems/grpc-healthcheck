@@ -9,7 +9,7 @@ build:
 
 .PHONY: publish
 publish:
-	./gradlew bintrayUpload bintrayPublish publishAllPublicationsToGitHubPackagesRepository
+	./gradlew --debug bintrayUpload bintrayPublish publishAllPublicationsToGitHubPackagesRepository
 
 .PHONY: update-proto
 update-proto:
