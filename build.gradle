@@ -25,7 +25,7 @@ protobuf {
 
 dependencies {
     compile 'com.google.protobuf:protobuf-java:3.10.+'
-    compile 'io.grpc:grpc-all:1.25.+'
+    compile 'io.grpc:grpc-all:1.38.+'
 }
 
 task protoJar(type: Jar){
