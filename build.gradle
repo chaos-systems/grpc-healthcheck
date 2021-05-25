@@ -24,7 +24,7 @@ protobuf {
 }
 
 dependencies {
-    compile 'com.google.protobuf:protobuf-java:3.10.+'
+    compile 'com.google.protobuf:protobuf-java:3.17.+'
     compile 'io.grpc:grpc-all:1.25.+'
 }
 
